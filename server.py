@@ -1,6 +1,6 @@
 import pandas as pd
 from flask import Flask, render_template, request, make_response
-
+from waitress import serve
 import json as json
 import requests
 from bs4 import BeautifulSoup
@@ -104,4 +104,5 @@ def results():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    serve(app, host='0.0.0.0', port=8080)
