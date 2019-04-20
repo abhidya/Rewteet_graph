@@ -5,7 +5,7 @@ import json as json
 import requests
 from bs4 import BeautifulSoup
 from robobrowser import RoboBrowser
-from tqdm import tqdm_notebook as tqdm
+# from tqdm import tqdm_notebook as tqdm
 
 
 
@@ -71,7 +71,7 @@ def get_df(users):
     dataframe = []
     retweets_graph = {}
 
-    for i in tqdm(users):
+    for i in (users):
         retweets_graph[i] = get_retweets(i)
 
     for i in users:
