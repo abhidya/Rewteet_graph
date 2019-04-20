@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<script>
+  function add_field()
+  {
+    var total_text=document.getElementsByClassName("input_text");
+    total_text=total_text.length+1;
+    field_div = document.getElementById("field_div");
+    new_input = "<li id='input_text"+total_text+"_wrapper'>";
+    new_input += "<input type='text' class='input_text' name='input_text[]' id='input_text"+
+    total_text+"' placeholder='Enter Text'>";
+    total_text+"'";
+    new_input += "</li>";
+    field_div.insertAdjacentHTML('beforeend',new_input);
+  }
+  function remove_field()
+  {
+    var total_text=document.getElementsByClassName("input_text");
+    document.getElementById("input_text"+total_text.length+"_wrapper").remove();
+  }
+</script>
+
+<div class = "container">
+  <h1>Get retweet graph</h1>
+  <form action='/results' method="post">
+    <div id="wrapper">
+      <input type="button" value="Add TextBox" onclick="add_field();">
+      <input type="button" value="Remove TextBox" onclick="remove_field();">
+      <ol id="field_div">
+
+      </ol>
+    </div>
+    <input type='submit' value='Submit'>
+  </form>
