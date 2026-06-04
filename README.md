@@ -29,3 +29,4 @@ http://localhost:8080
 - The code targets older Twitter web endpoints that are likely stale.
 - Some notebook/script paths were exploratory and may need dependency and API updates before reliable execution.
 - Use this repo as a research/archive artifact unless the scraping layer is modernized.
+- Generated notebook checkpoints and IDE metadata are intentionally ignored.
