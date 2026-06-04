@@ -24,9 +24,22 @@ Then open:
 http://localhost:8080
 ```
 
+## Offline demo path
+
+By default the server uses a fixture retweet graph for `alice`, `bob`, and
+`carol`, so `/results` can return a CSV without Twitter scraping, pandas, or
+Waitress:
+
+```sh
+python smoke_test.py
+```
+
+`/health` reports `offline-fixture`. Set `REWTEET_LIVE=1` to attempt the legacy
+Twitter scraping path.
+
 ## Caveats
 
-- The code targets older Twitter web endpoints that are likely stale.
+- The live code targets older Twitter web endpoints that are likely stale.
 - Some notebook/script paths were exploratory and may need dependency and API updates before reliable execution.
 - Use this repo as a research/archive artifact unless the scraping layer is modernized.
 - Generated notebook checkpoints and IDE metadata are intentionally ignored.

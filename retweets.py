@@ -1,11 +1,24 @@
 import json as json
 import requests
 from bs4 import BeautifulSoup
-from robobrowser import RoboBrowser
-from tqdm import tqdm_notebook as tqdm
+try:
+    import pandas as pd
+except ImportError:
+    pd = None
+try:
+    from robobrowser import RoboBrowser
+except ImportError:
+    RoboBrowser = None
+try:
+    from tqdm import tqdm_notebook as tqdm
+except ImportError:
+    tqdm = lambda values: values
 
 
 def get_tweets(handle, max_position=None):
+    if RoboBrowser is None:
+        raise RuntimeError("RoboBrowser is not installed")
+
     session = requests.Session()
     browser = RoboBrowser(session=session, parser="lxml")
     url = "https://twitter.com/i/profiles/show/" + handle + "/timeline/tweets?include_available_features=false&include_entities=false&reset_error_state=false"
@@ -55,6 +68,9 @@ def get_retweets(handle):
 
 
 def get_df(users):
+    if pd is None:
+        raise RuntimeError("pandas is not installed")
+
     dataframe = []
     retweets_graph = {}
 
